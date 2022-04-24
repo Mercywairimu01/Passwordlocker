@@ -52,5 +52,15 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.save_credentials()
         self.assertEqual(len(Credentials.Credentials_array),1)
         
+    def test_save_more_credentials(self):
+        """
+        test to check if a new credentials will be saved in the credentials array
+        """ 
+        self.new_credential.save_credentials()
+        twitterCredential=Credentials("Twitter","1234")
+        twitterCredential.save_credentials()
+        self.assertEqual(len(Credentials.Credentials_array),2)
+        
+        
 if __name__ == '__main__':
     unittest.main()

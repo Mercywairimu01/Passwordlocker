@@ -1,6 +1,7 @@
 import unittest #import the unittest module
 from user import User #import the User class
 from credentials import Credentials #import the Credentials class
+import pyperclip
 
 class TestUser(unittest.TestCase):
     """
@@ -71,7 +72,7 @@ class TestCredentials(unittest.TestCase):
         twitterCredential.save_credentials()
         self.assertEqual(len(Credentials.Credentials_array),2)
         
-    def test_find_credential (self):
+    def test_find_credential_account (self):
         """
         Test to see if we can find credential by account name
         """  
@@ -80,7 +81,8 @@ class TestCredentials(unittest.TestCase):
         twitterCredential.save_credentials()
         find_credential =Credentials.find_credential_account("Twitter")
         self.assertEqual(find_credential.account_name, twitterCredential.account_name)
-    
+        self.assertTrue(find_credential)
+        
     def test_delete_credential(self):
         """
         test to check whether we can remove a credential from the list
@@ -93,6 +95,25 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.delete_credential()
         self.assertEqual(len(Credentials.Credentials_array),1)
         
+    def test_copy_credential(self):
+        '''
+        Test to check if the copy credential method works
+        '''
+        self.new_credential.save_credentials()   
+        twitterCredential=Credentials("Twitter","1234")
+        twitterCredential.save_credentials()
+        find_credential = None
+        
+        for credential in Credentials.Credentials_array:
+            find_credential = Credentials.find_credential_account(credential.account_name)
+            return pyperclip.copy(find_credential.account_password)
+        Credentials.copy_credential(self.new_credential.account_name)
+        self.assertEqual("1234",pyperclip.paste())
+        print(pyperclip.paste())
+        
+    def test_display_all_credentials(self):
+        """TestCase to test whether all contacts can be displayed"""
+        self.assertEqual(Credentials.display_credentials(), Credentials.Credentials_array)    
         
 if __name__ == '__main__':
     unittest.main()

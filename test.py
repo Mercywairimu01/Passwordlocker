@@ -7,7 +7,7 @@ class TestUser(unittest.TestCase):
     A test class that defines test cases for the User class
     """
     
-    def setUp(self) :
+    def setUp(self):
         """
          Set up method to run before each test cases.
         """
@@ -26,5 +26,16 @@ class TestUser(unittest.TestCase):
          self.new_user.save_user()   #saving the new User
          self.assertEqual(len(User.user_list),1)
          
+class TestCredentials(unittest.TestCase):
+    """
+    Test class that defines test cases for the Credentials class behavior
+    """     
+       
+    def setUp(self):
+         """
+         Set up method to run before each Credentials' test case 
+         """ 
+         self.new_credential =Credentials("Facebook","0000")
+          
 if __name__ == '__main__':
     unittest.main()

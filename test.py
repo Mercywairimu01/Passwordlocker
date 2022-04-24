@@ -12,11 +12,13 @@ class TestUser(unittest.TestCase):
          Set up method to run before each test cases.
         """
         self.new_user = User("NewUser","0000")
+        
     def tearDown(self):
         """
         Method that clears the credentials_array after every test to ensure that there is no error
         """
-        Credentials.Credentials_array = []    
+        Credentials.Credentials_array = [] 
+        
     def test_init(self):
         """
         Test to ensure that the initialization of the User instance is done properly
@@ -41,7 +43,11 @@ class TestCredentials(unittest.TestCase):
          """ 
          self.new_credential =Credentials("Facebook","0000")
          
-         
+    def tearDown(self):
+        """
+        Method that clears the credentials_array after every test to ensure that there is no error
+        """
+        Credentials.Credentials_array = []      
     def test__init(self):
         """
         test to check if initialization of the Credentials class is properly done
@@ -74,8 +80,19 @@ class TestCredentials(unittest.TestCase):
         twitterCredential.save_credentials()
         find_credential =Credentials.find_credential_account("Twitter")
         self.assertEqual(find_credential.account_name, twitterCredential.account_name)
-
     
+    def test_delete_credential(self):
+        """
+        test to check whether we can remove a credential from the list
+        """
+       
+        self.new_credential.save_credentials()
+        twitterCredential = Credentials("Twitter","1234")
+        twitterCredential.save_credentials()
+
+        self.new_credential.delete_credential()
+        self.assertEqual(len(Credentials.Credentials_array),1)
+        
         
 if __name__ == '__main__':
     unittest.main()

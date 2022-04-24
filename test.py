@@ -4,6 +4,11 @@ from credentials import Credentials #import the Credentials class
 
 class TestUser(unittest.TestCase):
     """
-    A test class for test cases of the User class
+    A test class that defines test cases for the User class
     """
     
+    def setUp(self) :
+        """
+         Set up method to run before each test cases.
+        """
+        self.new_user = User("NewUser","0000")

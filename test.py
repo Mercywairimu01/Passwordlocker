@@ -36,6 +36,14 @@ class TestCredentials(unittest.TestCase):
          Set up method to run before each Credentials' test case 
          """ 
          self.new_credential =Credentials("Facebook","0000")
-          
+         
+         
+    def test__init(self):
+        """
+        test to check if initialization of the Credentials class is properly done
+        """
+        self.assertEqual(self.new_credential.account_name,"Facebook")
+        self.assertEqual(self.new_credential.account_password,"0000")
+        
 if __name__ == '__main__':
     unittest.main()

@@ -119,7 +119,7 @@ def main():
 
                 
             while True:
-                print("Select an option below to continue: Enter cc -to create a new credential,dc -to display credentials,cp -to copy credentials,cd -to delete credentials,ex-exit")
+                print("Select an option below to continue: Enter cc -to create a new credential,dc -to display credentials,cp -to copy credentials,del -to delete credentials,ex-exit")
                 short_code = input().lower()
             
                 if short_code == 'ex':               
@@ -172,7 +172,7 @@ def main():
                     chosen_site = input('Enter site name for the credential password to copy: ')
                     copy_credential(chosen_site)
                     
-                elif short_code =='cd':
+                elif short_code =='del':
                     print("Search for credential account to delete")
 
                     account_name = input()

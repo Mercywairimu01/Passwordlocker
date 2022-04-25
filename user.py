@@ -1,4 +1,6 @@
 import pyperclip
+
+from credentials import Credentials
 class User:
     """
     Class that generates new instance of users.
@@ -14,6 +16,5 @@ class User:
         Function to save a newly created user instance
         '''
         User.user_list.append(self)
-  
-  
+   
    

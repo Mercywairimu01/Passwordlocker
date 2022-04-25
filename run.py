@@ -183,7 +183,7 @@ def main():
                     print("Delete? y/n")
                     sure = input().lower()
                     if sure == 'y':
-                        delete_credential(search_credential.account_name)
+                        delete_credential(search_credential)
                         print("Account SUCCESSFULLY deleted")
                         break
                     elif sure == 'n':

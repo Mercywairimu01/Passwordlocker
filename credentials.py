@@ -1,4 +1,7 @@
+import string
 import pyperclip
+import random # Import random module
+
 class Credentials:
     """
     Class for credentials
@@ -16,6 +19,7 @@ class Credentials:
         saves a new credential instance
         """   
         Credentials.Credentials_array.append(self) 
+        
     def delete_credential(self):
         """
         Function to delete a saved credential from the credential_array
@@ -46,7 +50,18 @@ class Credentials:
      
     @classmethod
     def display_credentials(cls):
-        """Method which displays all current credentials"""
+        """
+        Method which displays all current credentials
+        """
         return cls.Credentials_array
-    
-    
+    def generate_password(self):
+        """
+        Generate a random password string of letters and digits and special characters
+        """
+        characters = "01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ&*(){}[]|/\?!@#$%^abcdefghijklmnopqrstuvwxyz"
+        
+        password_length = 6
+        
+        password = "".join(random.sample(characters, password_length))
+        
+        return password

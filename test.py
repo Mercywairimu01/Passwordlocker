@@ -112,7 +112,9 @@ class TestCredentials(unittest.TestCase):
         print(pyperclip.paste())
         
     def test_display_all_credentials(self):
-        """TestCase to test whether all contacts can be displayed"""
+        """
+        TestCase to test whether all contacts can be displayed
+        """
         self.assertEqual(Credentials.display_credentials(), Credentials.Credentials_array)    
         
 if __name__ == '__main__':
